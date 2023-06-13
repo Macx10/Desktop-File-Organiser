@@ -5,12 +5,12 @@ from shutil import move
 import logging
 
 # Describing the source folder and the folder to move in the files
-source_dir = "C:\Users\windowsz\Downloads"
-dest_dir_sfx = "D:\Downloads\Sounds"
-dest_dir_music = "D:\Downloads\Music"
-dest_dir_video = "D:\Downloads\Videos"
-dest_dir_image = "D:\Downloads\Images"
-dest_dir_documents = "D:\Downloads\Documents"
+source_dir = ""
+dest_dir_sfx = ""
+dest_dir_music = ""
+dest_dir_video = ""
+dest_dir_image = ""
+dest_dir_documents = ""
 
 # Suppoeted Image extensions
 image_extensions = [
@@ -33,16 +33,16 @@ document_extensions = [
 
 
 def make_unique(dest, name):
-    filename, extensions = splitext(name)
+    filename, extension = splitext(name)
     counter = 1
     # if file exists all number to the end of the file name
-    while exists(f"(dest)/(name)"):
-        name = f"{filname}({str(counter)}){extension}"
+    while exists(f"{dest}/{name}"):
+        name = f"{filename}({str(counter)}){extension}"
         counter += 1
     return name
 
 def move_file(dest, entry, name):
-    if exists(f"(dest)/(name)"):
+    if exists(f"{dest}/{name}"):
         unique_name = make_unique(dest, name)
         oldName = join(dest, name)
         newName = join(dest, unique_name)
